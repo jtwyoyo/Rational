@@ -55,9 +55,15 @@ public class RationalTest {
     }
     @Test
     public void testCompareTo() {
+        Rational x = new Rational(1,2);
+        Rational y = new Rational(3, 4);
+        Assert.assertEquals(-1, x.compareTo(y));
+    }
+    @Test
+    public void testToString() {
         Rational x = new Rational();
         x.numerator = 1;
         x.denominator = 2;
-        Assert.assertEquals(0, x.compareTo(x));
+        Assert.assertEquals("1/2", x.toString());
     }
 }

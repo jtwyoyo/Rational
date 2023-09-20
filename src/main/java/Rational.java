@@ -83,7 +83,10 @@ class Rational {
      */
     public boolean equals(Object x) {
         // to be completed
-        if (this == x)
+        Rational r = (Rational) x;
+        this.simplestForm();
+        r.simplestForm();
+        if (this == r)
             return true;
         else
             return false;// TODO: This needs to be modified.
@@ -96,10 +99,20 @@ class Rational {
      * rational number is larger than the given number
      */
     public long compareTo(Object x) {
-        // to be completed
         Rational r = (Rational) x;
-        int res = Long.compare(this.numerator/this.denominator, r.numerator/r.denominator);
-        return res; // TODO: this needs to be modified.
+        this.simplestForm();
+        r.simplestForm();
+
+        long thisNumerator = this.numerator * r.denominator;
+        long otherNumerator = r.numerator * this.denominator;
+
+        if (thisNumerator < otherNumerator) {
+            return -1;
+        } else if (thisNumerator > otherNumerator) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     /***
@@ -108,7 +121,7 @@ class Rational {
      */
     public String toString() { 
         // to be completed
-        return ""; // TODO: This needs to be modified.
+        return numerator+"/"+denominator; // TODO: This needs to be modified.
     }
 
     public static void main(String[] args) {
